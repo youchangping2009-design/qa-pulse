@@ -1,0 +1,6 @@
+{
+  "token": "github_pat_在此粘贴 Fine-grained PAT",
+  "tokenFile": "",
+  "apiBaseUrl": "https://api.github.com",
+  "comment": "复制本文件为 github.local.json 后填入 token。github.local.json 已被 gitignore，不会提交。"
+}

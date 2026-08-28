@@ -1,0 +1,6 @@
+{
+  "cacheTtlHours": 6,
+  "discoveryEnabled": true,
+  "watchlistConcurrency": 4,
+  "userAgent": "qa-github-weekly"
+}

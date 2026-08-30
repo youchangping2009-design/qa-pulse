@@ -1,6 +1,6 @@
-import type { Category, GrowthSource } from "@/lib/types";
+import type { DeltaWindow, SortKey, Tag, TrendPeriod } from "@/lib/types";
 
-export const CATEGORY_LABELS: Record<Category, string> = {
+export const TAG_LABELS: Record<Tag, string> = {
   e2e: "E2E / UI",
   api: "API 测试",
   performance: "性能测试",
@@ -9,12 +9,25 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   platform: "平台 / 报告",
   ai: "AI 测试",
   contract: "Mock / 契约",
+  visual: "视觉 / 无障碍",
+  security: "安全测试",
 };
 
-export const GROWTH_SOURCE_LABELS: Record<GrowthSource, string> = {
-  snapshot: "与上周快照对比",
-  stargazers: "近 7 天 stargazer（抽样）",
-  "new-repo": "本周新建，星标即涨幅",
-  "pending-snapshot": "等待下周快照",
-  "intra-week": "相对本周首次快照",
+export const PERIOD_LABELS: Record<TrendPeriod, string> = {
+  daily: "今日",
+  weekly: "本周",
+  monthly: "本月",
+};
+
+export const SORT_LABELS: Record<SortKey, string> = {
+  trending: "本周涨星",
+  stars: "总星标",
+  updated: "最近更新",
+  newest: "最新加入",
+};
+
+export const WINDOW_LABELS: Record<DeltaWindow, string> = {
+  full: "完整窗口",
+  partial: "窗口不足，对比最近快照",
+  missing: "等待快照",
 };

@@ -123,7 +123,7 @@ export function loadConfig(): ResolvedConfig {
       /\/$/,
       "",
     ),
-    userAgent: app.userAgent || "qa-github-weekly",
+    userAgent: app.userAgent || "best-of-qa",
     cacheTtlHours: app.cacheTtlHours ?? 6,
     discoveryEnabled: app.discoveryEnabled ?? true,
     watchlistConcurrency: app.watchlistConcurrency ?? 4,

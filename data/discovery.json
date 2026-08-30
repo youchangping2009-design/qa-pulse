@@ -1,0 +1,12 @@
+{
+  "minStars": 5,
+  "lookbackDays": 14,
+  "queries": [
+    "created:>=${since} topic:testing stars:>=${minStars}",
+    "created:>=${since} topic:e2e-testing stars:>=${minStars}",
+    "created:>=${since} topic:playwright stars:>=${minStars}",
+    "created:>=${since} topic:api-testing stars:>=${minStars}",
+    "created:>=${since} topic:load-testing stars:>=${minStars}",
+    "created:>=${since} topic:test-automation stars:>=${minStars}"
+  ]
+}

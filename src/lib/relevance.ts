@@ -1,6 +1,6 @@
-import type { Category } from "@/lib/types";
-import { CATEGORY_HINTS } from "@/lib/github";
 import type { GithubRepoPayload } from "@/lib/github";
+import { TAG_HINTS } from "@/lib/tag-hints";
+import type { Tag } from "@/lib/types";
 
 const RELEVANT_KEYWORDS = [
   "test",
@@ -28,6 +28,9 @@ const RELEVANT_KEYWORDS = [
   "testcontainer",
   "maestro",
   "detox",
+  "fuzz",
+  "visual regression",
+  "axe-core",
 ];
 
 const EXCLUDE_KEYWORDS = [
@@ -59,14 +62,14 @@ const TOPIC_ALLOW = new Set([
   "unit-testing",
   "contract-testing",
   "mocking",
+  "visual-testing",
+  "accessibility",
+  "fuzzing",
+  "dast",
 ]);
 
 function blobOf(repo: GithubRepoPayload): string {
-  return [
-    repo.full_name,
-    repo.description ?? "",
-    ...(repo.topics ?? []),
-  ]
+  return [repo.full_name, repo.description ?? "", ...(repo.topics ?? [])]
     .join(" ")
     .toLowerCase();
 }
@@ -81,14 +84,11 @@ export function isRelevantTestingRepo(repo: GithubRepoPayload): boolean {
   return RELEVANT_KEYWORDS.some((word) => blob.includes(word));
 }
 
-export function inferCategories(repo: GithubRepoPayload): Category[] {
+export function inferTags(repo: GithubRepoPayload): Tag[] {
   const blob = blobOf(repo);
-  const cats: Category[] = [];
-  for (const [category, keys] of Object.entries(CATEGORY_HINTS) as [
-    Category,
-    string[],
-  ][]) {
-    if (keys.some((key) => blob.includes(key))) cats.push(category);
+  const tags: Tag[] = [];
+  for (const [tag, keys] of Object.entries(TAG_HINTS) as [Tag, string[]][]) {
+    if (keys.some((key) => blob.includes(key))) tags.push(tag);
   }
-  return cats.length ? cats : ["e2e"];
+  return tags.length ? tags : ["e2e"];
 }

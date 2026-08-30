@@ -1,4 +1,4 @@
-export const CATEGORIES = [
+export const TAGS = [
   "e2e",
   "api",
   "performance",
@@ -7,26 +7,53 @@ export const CATEGORIES = [
   "platform",
   "ai",
   "contract",
+  "visual",
+  "security",
 ] as const;
 
-export type Category = (typeof CATEGORIES)[number];
+export type Tag = (typeof TAGS)[number];
 
-export type GrowthSource =
-  | "snapshot"
-  | "stargazers"
-  | "new-repo"
-  | "pending-snapshot"
-  | "intra-week";
+/** 兼容旧名称，页面与流水线统一用 Tag。 */
+export type Category = Tag;
 
-export type RepoSource = "watchlist" | "discovery";
+export const PROJECT_STATUSES = [
+  "active",
+  "featured",
+  "deprecated",
+  "pending",
+] as const;
 
-export type RepoRecord = {
+export type ProjectStatus = (typeof PROJECT_STATUSES)[number];
+
+export type ProjectSource = "catalog" | "discovery";
+
+export type DeltaWindow = "full" | "partial" | "missing";
+
+export type TrendPeriod = "daily" | "weekly" | "monthly";
+
+export type CatalogEntry = {
+  fullName: string;
+  tags: Tag[];
+  status?: ProjectStatus;
+  slug?: string;
+  name?: string;
+  homepage?: string;
+};
+
+export type StarHistoryPoint = {
+  date: string;
+  stars: number;
+};
+
+export type ProjectRecord = {
+  slug: string;
   id: string;
   name: string;
   owner: string;
   ownerAvatar: string | null;
   description: string | null;
   url: string;
+  homepage: string | null;
   stars: number;
   forks: number;
   language: string | null;
@@ -34,38 +61,43 @@ export type RepoRecord = {
   license: string | null;
   createdAt: string;
   pushedAt: string | null;
-  homepage: string | null;
-  categories: Category[];
-  source: RepoSource;
-  isNewThisWeek: boolean;
-  starsThisWeek: number | null;
-  starsThisWeekCapped: boolean;
-  growthSource: GrowthSource;
-};
-
-export type Digest = {
-  weekId: string;
-  weekStart: string;
-  weekEnd: string;
-  generatedAt: string;
-  source: "live" | "cache" | "seed";
-  hasToken: boolean;
-  note: string;
-  highlights: {
-    fastest: string | null;
-    newcomer: string | null;
-    mostStarred: string | null;
+  tags: Tag[];
+  status: ProjectStatus;
+  source: ProjectSource;
+  isNew: boolean;
+  delta: {
+    daily: number | null;
+    weekly: number | null;
+    monthly: number | null;
   };
-  repos: RepoRecord[];
+  deltaWindow: {
+    daily: DeltaWindow;
+    weekly: DeltaWindow;
+    monthly: DeltaWindow;
+  };
+  history: StarHistoryPoint[];
 };
 
-export type Snapshot = {
-  weekId: string;
+export type DailySnapshot = {
+  date: string;
   capturedAt: string;
   stars: Record<string, number>;
 };
 
-export type CatalogEntry = {
-  fullName: string;
-  categories: Category[];
+export type Dataset = {
+  generatedAt: string;
+  source: "live" | "cache";
+  hasToken: boolean;
+  note: string;
+  projects: ProjectRecord[];
+};
+
+export type SortKey = "trending" | "stars" | "updated" | "newest";
+
+export type ConfigStatus = {
+  hasToken: boolean;
+  authKind: "none" | "fine-grained" | "classic" | "other";
+  tokenMasked: string | null;
+  localConfigExists: boolean;
+  configRelPath: string;
 };

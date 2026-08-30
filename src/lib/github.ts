@@ -1,5 +1,4 @@
 import { loadConfig } from "@/lib/config";
-import type { Category } from "@/lib/types";
 
 export type GithubRepoPayload = {
   full_name: string;
@@ -134,14 +133,3 @@ export async function mapWithConcurrency<T, R>(
   await Promise.all(workers);
   return results;
 }
-
-export const CATEGORY_HINTS: Record<Category, string[]> = {
-  e2e: ["playwright", "cypress", "selenium", "e2e", "webdriver", "puppeteer", "testcafe"],
-  api: ["api", "rest", "http", "graphql", "karate", "bruno", "hurl", "keploy"],
-  performance: ["k6", "jmeter", "locust", "gatling", "load", "performance", "artillery"],
-  unit: ["unit", "pytest", "jest", "vitest", "junit", "testcontainer", "mockito"],
-  mobile: ["appium", "android", "ios", "mobile", "maestro", "detox", "airtest"],
-  platform: ["allure", "report", "platform", "dashboard", "metersphere"],
-  ai: ["ai", "agent", "llm", "mcp", "midscene", "stagehand"],
-  contract: ["mock", "wiremock", "pact", "msw", "mockoon", "contract"],
-};

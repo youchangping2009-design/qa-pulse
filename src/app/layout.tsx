@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,11 +22,11 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "测试工程周报",
-  description: "每周汇总 GitHub 上测试工程师相关、星涨较快的开源项目",
+  title: "QA Pulse",
+  description: "测试工程师开源目录：按日 / 周 / 月追踪 GitHub 测试相关项目的星标涨幅",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="zh-CN"

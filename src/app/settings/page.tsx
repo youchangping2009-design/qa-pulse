@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { publicConfigStatus } from "@/lib/config";
+import { PageShell } from "@/components/site-header";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,12 +15,9 @@ export default async function SettingsPage() {
   const status = publicConfigStatus();
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-10 sm:px-6">
+    <PageShell>
       <div>
-        <Button variant="ghost" size="sm" render={<Link href="/" />}>
-          ← 返回周报
-        </Button>
-        <h1 className="font-heading mt-4 text-3xl font-semibold">GitHub Token 配置</h1>
+        <h1 className="font-heading text-3xl font-semibold">GitHub Token 配置</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
           本项目使用 Fine-grained personal access token，写在本地配置文件里，不进 Git。页面不会展示完整 token。
         </p>
@@ -74,13 +70,13 @@ export default async function SettingsPage() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm leading-6">
           <ol className="list-decimal space-y-2 pl-5">
-            <li>Token name 填 <code className="font-mono text-xs">qa-github-weekly</code>。</li>
+            <li>Token name 填 <code className="font-mono text-xs">best-of-qa</code>。</li>
             <li>Expiration 建议 90 天，到期后只换 token，不必改代码。</li>
             <li>
               Resource owner 选你的个人账号。
             </li>
             <li>
-              Repository access 选 <strong>All repositories</strong> 或 Public repositories（只读公开仓库即可）。本周报只读公开项目元数据和搜索结果，不访问你的私有代码。
+              Repository access 选 <strong>All repositories</strong> 或 Public repositories（只读公开仓库即可）。目录只读公开项目元数据和搜索结果，不访问你的私有代码。
             </li>
             <li>
               Repository permissions 只需 <strong>Metadata: Read-only</strong>。不要勾选 Contents、Pull requests 等写权限。
@@ -88,7 +84,7 @@ export default async function SettingsPage() {
             <li>生成后复制以 <code className="font-mono text-xs">github_pat_</code> 开头的字符串。</li>
           </ol>
           <p className="text-muted-foreground">
-            2026 年 7 月起，第三方仓库的 stargazer 名单接口已收紧。本项目用每周星标快照计算涨幅，不需要 Stargazers 写权限。
+            2026 年 7 月起，第三方仓库的 stargazer 名单接口已收紧。本项目用每日星标快照计算涨幅，不需要 Stargazers 写权限。
           </p>
         </CardContent>
       </Card>
@@ -123,7 +119,7 @@ export default async function SettingsPage() {
           </p>
         </CardContent>
       </Card>
-    </div>
+    </PageShell>
   );
 }
 

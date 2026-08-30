@@ -1,13 +1,21 @@
-import { mkdirSync, existsSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
-import type { Digest, Snapshot } from "@/lib/types";
+import type { DailySnapshot, Dataset } from "@/lib/types";
+import { toIsoDate } from "@/lib/week";
 
 const ROOT = process.cwd();
-const DIGEST_DIR = path.join(ROOT, "data", "digests");
 const SNAPSHOT_DIR = path.join(ROOT, "data", "snapshots");
+const PROJECTS_FILE = path.join(ROOT, "data", "projects.json");
+const DATE_FILE = /^\d{4}-\d{2}-\d{2}\.json$/;
+const WEEK_FILE = /^\d{4}-W\d{2}\.json$/;
 
-function ensureDirs() {
-  mkdirSync(DIGEST_DIR, { recursive: true });
+function ensureDir() {
   mkdirSync(SNAPSHOT_DIR, { recursive: true });
 }
 
@@ -16,45 +24,61 @@ function readJson<T>(filePath: string): T | null {
   return JSON.parse(readFileSync(filePath, "utf8")) as T;
 }
 
-export function loadLatestDigest(): Digest | null {
-  return readJson<Digest>(path.join(DIGEST_DIR, "latest.json"));
+export function loadDataset(): Dataset | null {
+  return readJson<Dataset>(PROJECTS_FILE);
 }
 
-export function loadDigest(weekId: string): Digest | null {
-  return readJson<Digest>(path.join(DIGEST_DIR, `${weekId}.json`));
+export function saveDataset(dataset: Dataset) {
+  writeFileSync(PROJECTS_FILE, `${JSON.stringify(dataset, null, 2)}\n`);
 }
 
-export function listDigestWeeks(): string[] {
-  if (!existsSync(DIGEST_DIR)) return [];
-  return readdirSync(DIGEST_DIR)
-    .filter((name) => name.endsWith(".json") && name !== "latest.json")
-    .map((name) => name.replace(/\.json$/, ""))
-    .sort()
-    .reverse();
+export function loadDailySnapshot(date: string): DailySnapshot | null {
+  return readJson<DailySnapshot>(path.join(SNAPSHOT_DIR, `${date}.json`));
 }
 
-export function saveDigest(digest: Digest) {
-  ensureDirs();
-  const body = JSON.stringify(digest, null, 2);
-  writeFileSync(path.join(DIGEST_DIR, "latest.json"), body);
-  writeFileSync(path.join(DIGEST_DIR, `${digest.weekId}.json`), body);
-}
-
-export function loadSnapshot(weekId: string): Snapshot | null {
-  return readJson<Snapshot>(path.join(SNAPSHOT_DIR, `${weekId}.json`));
-}
-
-export function saveWeekBaseline(snapshot: Snapshot) {
-  ensureDirs();
-  const target = path.join(SNAPSHOT_DIR, `${snapshot.weekId}.json`);
-  if (existsSync(target)) return;
-  writeFileSync(target, JSON.stringify(snapshot, null, 2));
-}
-
-export function saveLatestSnapshot(snapshot: Snapshot) {
-  ensureDirs();
+export function saveDailySnapshot(snapshot: DailySnapshot) {
+  ensureDir();
   writeFileSync(
-    path.join(SNAPSHOT_DIR, "latest.json"),
-    JSON.stringify(snapshot, null, 2),
+    path.join(SNAPSHOT_DIR, `${snapshot.date}.json`),
+    `${JSON.stringify(snapshot, null, 2)}\n`,
   );
+}
+
+export function listSnapshotDates(): string[] {
+  if (!existsSync(SNAPSHOT_DIR)) return [];
+  return readdirSync(SNAPSHOT_DIR)
+    .filter((name) => DATE_FILE.test(name))
+    .map((name) => name.replace(/\.json$/, ""))
+    .sort();
+}
+
+export function loadSnapshotHistory(): DailySnapshot[] {
+  migrateLegacySnapshots();
+  return listSnapshotDates()
+    .map((date) => loadDailySnapshot(date))
+    .filter((item): item is DailySnapshot => item != null);
+}
+
+/** 把旧的周快照转成按日文件，只转换一次。 */
+export function migrateLegacySnapshots() {
+  if (!existsSync(SNAPSHOT_DIR)) return;
+  for (const name of readdirSync(SNAPSHOT_DIR)) {
+    if (!WEEK_FILE.test(name) && name !== "latest.json") continue;
+    const raw = readJson<{
+      weekId?: string;
+      capturedAt?: string;
+      date?: string;
+      stars?: Record<string, number>;
+    }>(path.join(SNAPSHOT_DIR, name));
+    if (!raw?.stars) continue;
+    const date =
+      raw.date ||
+      (raw.capturedAt ? toIsoDate(new Date(raw.capturedAt)) : null);
+    if (!date || loadDailySnapshot(date)) continue;
+    saveDailySnapshot({
+      date,
+      capturedAt: raw.capturedAt ?? new Date().toISOString(),
+      stars: raw.stars,
+    });
+  }
 }

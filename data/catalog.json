@@ -1,47 +1,1623 @@
 {
-  "repos": [
-    { "fullName": "microsoft/playwright", "categories": ["e2e"] },
-    { "fullName": "microsoft/playwright-python", "categories": ["e2e"] },
-    { "fullName": "microsoft/playwright-mcp", "categories": ["e2e", "ai"] },
-    { "fullName": "cypress-io/cypress", "categories": ["e2e"] },
-    { "fullName": "SeleniumHQ/selenium", "categories": ["e2e"] },
-    { "fullName": "seleniumbase/SeleniumBase", "categories": ["e2e"] },
-    { "fullName": "webdriverio/webdriverio", "categories": ["e2e"] },
-    { "fullName": "DevExpress/testcafe", "categories": ["e2e"] },
-    { "fullName": "puppeteer/puppeteer", "categories": ["e2e"] },
-    { "fullName": "grafana/k6", "categories": ["performance"] },
-    { "fullName": "apache/jmeter", "categories": ["performance"] },
-    { "fullName": "locustio/locust", "categories": ["performance"] },
-    { "fullName": "gatling/gatling", "categories": ["performance"] },
-    { "fullName": "artilleryio/artillery", "categories": ["performance"] },
-    { "fullName": "pytest-dev/pytest", "categories": ["unit"] },
-    { "fullName": "vitest-dev/vitest", "categories": ["unit"] },
-    { "fullName": "jestjs/jest", "categories": ["unit"] },
-    { "fullName": "testcontainers/testcontainers-java", "categories": ["unit"] },
-    { "fullName": "mockito/mockito", "categories": ["unit"] },
-    { "fullName": "mswjs/msw", "categories": ["unit", "contract"] },
-    { "fullName": "testing-library/react-testing-library", "categories": ["unit"] },
-    { "fullName": "stryker-mutator/stryker-js", "categories": ["unit"] },
-    { "fullName": "appium/appium", "categories": ["mobile"] },
-    { "fullName": "wix/Detox", "categories": ["mobile"] },
-    { "fullName": "mobile-dev-inc/maestro", "categories": ["mobile"] },
-    { "fullName": "AirtestProject/Airtest", "categories": ["mobile"] },
-    { "fullName": "rest-assured/rest-assured", "categories": ["api"] },
-    { "fullName": "karatelabs/karate", "categories": ["api", "e2e"] },
-    { "fullName": "usebruno/bruno", "categories": ["api"] },
-    { "fullName": "Orange-OpenSource/hurl", "categories": ["api"] },
-    { "fullName": "schemathesis/schemathesis", "categories": ["api"] },
-    { "fullName": "keploy/keploy", "categories": ["api"] },
-    { "fullName": "hoppscotch/hoppscotch", "categories": ["api"] },
-    { "fullName": "allure-framework/allure2", "categories": ["platform"] },
-    { "fullName": "reportportal/reportportal", "categories": ["platform"] },
-    { "fullName": "metersphere/metersphere", "categories": ["platform"] },
-    { "fullName": "sorry-cypress/sorry-cypress", "categories": ["platform"] },
-    { "fullName": "robotframework/robotframework", "categories": ["platform", "e2e"] },
-    { "fullName": "wiremock/wiremock", "categories": ["contract"] },
-    { "fullName": "pact-foundation/pact-js", "categories": ["contract"] },
-    { "fullName": "mockoon/mockoon", "categories": ["contract"] },
-    { "fullName": "web-infra-dev/midscene", "categories": ["ai", "e2e"] },
-    { "fullName": "browserbase/stagehand", "categories": ["ai", "e2e"] }
+  "projects": [
+    {
+      "fullName": "microsoft/playwright",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "microsoft/playwright-python",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "microsoft/playwright-java",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microsoft/playwright-dotnet",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microsoft/playwright-mcp",
+      "tags": [
+        "e2e",
+        "ai"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "cypress-io/cypress",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "SeleniumHQ/selenium",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "seleniumbase/SeleniumBase",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "webdriverio/webdriverio",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "DevExpress/testcafe",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "puppeteer/puppeteer",
+      "tags": [
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "codeceptjs/CodeceptJS",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "nightwatchjs/nightwatch",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "karatelabs/karate",
+      "tags": [
+        "api",
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "robotframework/robotframework",
+      "tags": [
+        "platform",
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "serenity-bdd/serenity-core",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "cucumber/cucumber-js",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "cucumber/cucumber-jvm",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "reqnroll/Reqnroll",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "teamcapybara/capybara",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "codeception/Codeception",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "getgauge/gauge",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "selenide/selenide",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "angular/protractor",
+      "tags": [
+        "e2e"
+      ],
+      "status": "deprecated"
+    },
+    {
+      "fullName": "watir/watir",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testing-library/cypress-testing-library",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "vitalets/playwright-bdd",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microsoft/playwright-pytest",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "storybookjs/test-runner",
+      "tags": [
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "web-infra-dev/midscene",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "browserbase/stagehand",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "rest-assured/rest-assured",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "usebruno/bruno",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "Orange-OpenSource/hurl",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "schemathesis/schemathesis",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "keploy/keploy",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "hoppscotch/hoppscotch",
+      "tags": [
+        "api"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "Kong/insomnia",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "postmanlabs/newman",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "HttpRunner/HttpRunner",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "taverntesting/tavern",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "stepci/stepci",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "stoplightio/prism",
+      "tags": [
+        "api",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "stoplightio/spectral",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "vlucas/frisby",
+      "tags": [
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "apiaryio/dredd",
+      "tags": [
+        "api",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "specmatic/specmatic",
+      "tags": [
+        "api",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "grafana/k6",
+      "tags": [
+        "performance"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "apache/jmeter",
+      "tags": [
+        "performance"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "locustio/locust",
+      "tags": [
+        "performance"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "gatling/gatling",
+      "tags": [
+        "performance"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "artilleryio/artillery",
+      "tags": [
+        "performance"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "tsenart/vegeta",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "rakyll/hey",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "hatoo/oha",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "fortio/fortio",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "wg/wrk",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "giltene/wrk2",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "codesenberg/bombardier",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "buger/goreplay",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "yandex/yandex-tank",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "Blazemeter/taurus",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "hyperfoil/hyperfoil",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "JoeDog/siege",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "processone/tsung",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "grafana/k6-operator",
+      "tags": [
+        "performance"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pytest-dev/pytest",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "vitest-dev/vitest",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "jestjs/jest",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "testcontainers/testcontainers-java",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "testcontainers/testcontainers-node",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testcontainers/testcontainers-python",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testcontainers/testcontainers-go",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testcontainers/testcontainers-dotnet",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mockito/mockito",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "mswjs/msw",
+      "tags": [
+        "unit",
+        "contract"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "testing-library/react-testing-library",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "testing-library/dom-testing-library",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testing-library/user-event",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testing-library/jest-dom",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testing-library/vue-testing-library",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "stryker-mutator/stryker-js",
+      "tags": [
+        "unit"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "stryker-mutator/stryker-net",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mochajs/mocha",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "jasmine/jasmine",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "avajs/ava",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "qunitjs/qunit",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "junit-team/junit5",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testng-team/testng",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "spockframework/spock",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "kotest/kotest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "scalatest/scalatest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "catchorg/Catch2",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/googletest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "doctest/doctest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "xunit/xunit",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "nunit/nunit",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "fluentassertions/fluentassertions",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "sebastianbergmann/phpunit",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pestphp/pest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "rspec/rspec-core",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "minitest/minitest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "HypothesisWorks/hypothesis",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "dubzzz/fast-check",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "assertj/assertj",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "chaijs/chai",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "sinonjs/sinon",
+      "tags": [
+        "unit",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "nock/nock",
+      "tags": [
+        "unit",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "jacoco/jacoco",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "coveragepy/coveragepy",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "istanbuljs/nyc",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "bcoe/c8",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "datafaker-net/datafaker",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "faker-js/faker",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "thoughtbot/factory_bot",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "hamcrest/JavaHamcrest",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/truth",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "karma-runner/karma",
+      "tags": [
+        "unit"
+      ],
+      "status": "deprecated"
+    },
+    {
+      "fullName": "powermock/powermock",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mockk/mockk",
+      "tags": [
+        "unit",
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "NSubstitute/NSubstitute",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "instancio/instancio",
+      "tags": [
+        "unit"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "appium/appium",
+      "tags": [
+        "mobile"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "wix/Detox",
+      "tags": [
+        "mobile"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "mobile-dev-inc/maestro",
+      "tags": [
+        "mobile"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "AirtestProject/Airtest",
+      "tags": [
+        "mobile"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "appium/appium-inspector",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "openatx/uiautomator2",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "openatx/facebook-wda",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "alibaba/macaca",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/EarlGrey",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "KasperskyLab/Kaspresso",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "KakaoCup/Kakao",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "leancodepl/patrol",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pointfreeco/swift-snapshot-testing",
+      "tags": [
+        "mobile",
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "uber/ios-snapshot-test-case",
+      "tags": [
+        "mobile",
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "android/android-test",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "facebook/idb",
+      "tags": [
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "allure-framework/allure2",
+      "tags": [
+        "platform"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "allure-framework/allure-js",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "allure-framework/allure-python",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "reportportal/reportportal",
+      "tags": [
+        "platform"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "metersphere/metersphere",
+      "tags": [
+        "platform"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "sorry-cypress/sorry-cypress",
+      "tags": [
+        "platform"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "kiwitcms/Kiwi",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "TestLinkOpenSourceTRMS/testlink-code",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "anshooarora/extentreports-java",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "KnapsackPro/knapsack",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "gotestyourself/gotestsum",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "cypress-io/github-action",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "codecov/codecov-action",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "executeautomation/mcp-playwright",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "tinyfish-io/agentql",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "skyvern-ai/skyvern",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "browser-use/browser-use",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "testdriverai/cli",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "anti-work/shortest",
+      "tags": [
+        "ai",
+        "e2e"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "promptfoo/promptfoo",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "confident-ai/deepeval",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "openai/evals",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "giskard-ai/giskard",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "evidentlyai/evidently",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "deepchecks/deepchecks",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "explodinggradients/ragas",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "leondz/garak",
+      "tags": [
+        "ai",
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microsoft/promptbench",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "protectai/llm-guard",
+      "tags": [
+        "ai",
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "guardrails-ai/guardrails",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "great-expectations/great_expectations",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "sodadata/soda-core",
+      "tags": [
+        "platform"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "truera/trulens",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "comet-ml/opik",
+      "tags": [
+        "ai"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "wiremock/wiremock",
+      "tags": [
+        "contract"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "pact-foundation/pact-js",
+      "tags": [
+        "contract"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "pact-foundation/pact-python",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pact-foundation/pact-jvm",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pact-foundation/pact-go",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pact-foundation/pact-net",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mockoon/mockoon",
+      "tags": [
+        "contract"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "SpectoLabs/hoverfly",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "bbyars/mountebank",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mock-server/mockserver",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "typicode/json-server",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "spring-cloud/spring-cloud-contract",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microcks/microcks",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "Thiht/smocker",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "DATA-DOG/go-sqlmock",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "kevin1024/vcrpy",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "gabrielfalcao/HTTPretty",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "getsentry/responses",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "uber-go/mock",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pytest-dev/pytest-mock",
+      "tags": [
+        "contract"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "lost-pixel/lost-pixel",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "garris/BackstopJS",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "americanexpress/jest-image-snapshot",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "reg-viz/reg-suit",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "reg-viz/reg-cli",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "argos-ci/argos",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mapbox/pixelmatch",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "rsmbl/Resemble.js",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "dmtrKovalenko/odiff",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "facebook/screenshot-tests-for-android",
+      "tags": [
+        "visual",
+        "mobile"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "gemini-testing/hermione",
+      "tags": [
+        "e2e",
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "dequelabs/axe-core",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "pa11y/pa11y",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "guidepup/guidepup",
+      "tags": [
+        "visual"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "zaproxy/zaproxy",
+      "tags": [
+        "security"
+      ],
+      "status": "featured"
+    },
+    {
+      "fullName": "projectdiscovery/nuclei",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "sqlmapproject/sqlmap",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "ffuf/ffuf",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/oss-fuzz",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "AFLplusplus/AFLplusplus",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/honggfuzz",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/syzkaller",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "microsoft/restler-fuzzer",
+      "tags": [
+        "security",
+        "api"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "semgrep/semgrep",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "spotbugs/spotbugs",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "find-sec-bugs/find-sec-bugs",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "presidentbeef/brakeman",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "securego/gosec",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "gauntlt/gauntlt",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "wapiti-scanner/wapiti",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "shopify/toxiproxy",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "litmuschaos/litmus",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "chaos-mesh/chaos-mesh",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "Netflix/chaosmonkey",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "mitmproxy/mitmproxy",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    },
+    {
+      "fullName": "google/clusterfuzz",
+      "tags": [
+        "security"
+      ],
+      "status": "active"
+    }
   ]
 }

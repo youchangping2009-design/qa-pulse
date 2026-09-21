@@ -2,12 +2,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-header";
+import { ProjectMarkControl } from "@/components/project-mark-control";
 import { Sparkline } from "@/components/sparkline";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getCachedDataset } from "@/lib/build";
 import { findProject, formatDelta, formatStars } from "@/lib/format";
 import { TAG_LABELS, WINDOW_LABELS } from "@/lib/labels";
+import { loadProjectMarks, markForProject } from "@/lib/project-marks";
 import { formatCnDate } from "@/lib/week";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +23,7 @@ export default async function ProjectDetailPage({
   const dataset = await getCachedDataset();
   const project = findProject(dataset?.projects ?? [], slug);
   if (!project) notFound();
+  const mark = markForProject(loadProjectMarks(), project.id);
 
   return (
     <PageShell>
@@ -59,6 +62,10 @@ export default async function ProjectDetailPage({
               <ArrowUpRight />
             </Button>
           ) : null}
+          <ProjectMarkControl
+            projectId={project.id}
+            initialState={mark?.state ?? null}
+          />
         </div>
       </div>
 

@@ -2,6 +2,10 @@ import { PageShell } from "@/components/site-header";
 import { ProjectRow } from "@/components/project-row";
 import { ProjectsToolbar } from "@/components/projects-toolbar";
 import { getCachedDataset } from "@/lib/build";
+import {
+  excludeMarkedProjects,
+  loadProjectMarks,
+} from "@/lib/project-marks";
 import { filterProjects, sortProjects } from "@/lib/sort";
 import type { SortKey } from "@/lib/types";
 
@@ -29,8 +33,12 @@ export default async function ProjectsPage({
   const query = firstString(params.q);
   const sort = parseSort(firstString(params.sort));
   const dataset = await getCachedDataset();
+  const visibleProjects = excludeMarkedProjects(
+    dataset?.projects ?? [],
+    loadProjectMarks(),
+  );
   const projects = sortProjects(
-    filterProjects(dataset?.projects ?? [], query, "all"),
+    filterProjects(visibleProjects, query, "all"),
     sort,
   );
 

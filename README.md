@@ -36,6 +36,8 @@ npm run snapshot    # 拉取观察名单并生成 data/projects.json
 npm run dev
 ```
 
-开发服务默认 http://127.0.0.1:43217 。打开后可按分类浏览、搜索、导出本周 Markdown，或点击「刷新数据」。
+开发服务默认 http://127.0.0.1:43217 。打开后可按分类浏览、搜索、导出本周 Markdown，或点击「刷新数据」。项目可标记为「已了解」「已学习」或「忽略」，标记后会从常规榜单中隐藏，并集中收纳在「我的标记」页面。
+
+个人标记保存在本地 `data/project-marks.json`，不会随 GitHub 数据刷新被覆盖，也不会提交到 Git。
 
 观察名单在 `data/catalog.json`，发现规则在 `data/discovery.json`。换领域只需改这两份配置和 `src/lib/relevance.ts`。

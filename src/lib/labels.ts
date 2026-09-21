@@ -1,4 +1,10 @@
-import type { DeltaWindow, SortKey, Tag, TrendPeriod } from "@/lib/types";
+import type {
+  DeltaWindow,
+  ProjectMarkState,
+  SortKey,
+  Tag,
+  TrendPeriod,
+} from "@/lib/types";
 
 export const TAG_LABELS: Record<Tag, string> = {
   e2e: "E2E / UI",
@@ -30,4 +36,10 @@ export const WINDOW_LABELS: Record<DeltaWindow, string> = {
   full: "完整窗口",
   partial: "窗口不足，对比最近快照",
   missing: "等待快照",
+};
+
+export const PROJECT_MARK_LABELS: Record<ProjectMarkState, string> = {
+  understood: "已学习",
+  learned: "已了解",
+  ignored: "忽略",
 };

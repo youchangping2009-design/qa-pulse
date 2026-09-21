@@ -3,6 +3,10 @@ import { PageShell } from "@/components/site-header";
 import { ProjectRow } from "@/components/project-row";
 import { getCachedDataset } from "@/lib/build";
 import { PERIOD_LABELS } from "@/lib/labels";
+import {
+  excludeMarkedProjects,
+  loadProjectMarks,
+} from "@/lib/project-marks";
 import type { TrendPeriod } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +26,10 @@ export default async function TrendsPage({
   if (!isPeriod(period)) notFound();
 
   const dataset = await getCachedDataset();
-  const projects = [...(dataset?.projects ?? [])]
+  const projects = excludeMarkedProjects(
+    dataset?.projects ?? [],
+    loadProjectMarks(),
+  )
     .filter((project) => project.status !== "deprecated")
     .sort((a, b) => (b.delta[period] ?? -1) - (a.delta[period] ?? -1));
 
@@ -36,16 +43,22 @@ export default async function TrendsPage({
           由每日星标快照对比得出。没有对应日期的快照时会回退到最近一次记录。
         </p>
       </div>
-      <ul className="flex flex-col gap-3">
-        {projects.map((project, index) => (
-          <ProjectRow
-            key={project.id}
-            project={project}
-            rank={index + 1}
-            period={period}
-          />
-        ))}
-      </ul>
+      {projects.length === 0 ? (
+        <div className="rounded-xl border border-dashed px-6 py-16 text-center text-sm text-muted-foreground">
+          当前没有可展示的项目。
+        </div>
+      ) : (
+        <ul className="flex flex-col gap-3">
+          {projects.map((project, index) => (
+            <ProjectRow
+              key={project.id}
+              project={project}
+              rank={index + 1}
+              period={period}
+            />
+          ))}
+        </ul>
+      )}
     </PageShell>
   );
 }

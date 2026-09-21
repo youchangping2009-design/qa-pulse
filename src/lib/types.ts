@@ -31,6 +31,21 @@ export type DeltaWindow = "full" | "partial" | "missing";
 
 export type TrendPeriod = "daily" | "weekly" | "monthly";
 
+export const PROJECT_MARK_STATES = [
+  "understood",
+  "learned",
+  "ignored",
+] as const;
+
+export type ProjectMarkState = (typeof PROJECT_MARK_STATES)[number];
+
+export type ProjectMark = {
+  state: ProjectMarkState;
+  updatedAt: string;
+};
+
+export type ProjectMarks = Record<string, ProjectMark>;
+
 export type CatalogEntry = {
   fullName: string;
   tags: Tag[];

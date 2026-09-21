@@ -3,6 +3,10 @@ import { PageShell } from "@/components/site-header";
 import { ProjectRow } from "@/components/project-row";
 import { getCachedDataset } from "@/lib/build";
 import { TAG_LABELS } from "@/lib/labels";
+import {
+  excludeMarkedProjects,
+  loadProjectMarks,
+} from "@/lib/project-marks";
 import { filterProjects, sortProjects } from "@/lib/sort";
 import { TAGS, type Tag } from "@/lib/types";
 
@@ -21,8 +25,12 @@ export default async function TagDetailPage({
   if (!isTag(code)) notFound();
 
   const dataset = await getCachedDataset();
+  const visibleProjects = excludeMarkedProjects(
+    dataset?.projects ?? [],
+    loadProjectMarks(),
+  );
   const projects = sortProjects(
-    filterProjects(dataset?.projects ?? [], "", code),
+    filterProjects(visibleProjects, "", code),
     "trending",
   );
 

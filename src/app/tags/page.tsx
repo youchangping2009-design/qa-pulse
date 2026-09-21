@@ -2,6 +2,10 @@ import Link from "next/link";
 import { PageShell } from "@/components/site-header";
 import { getCachedDataset } from "@/lib/build";
 import { TAG_LABELS } from "@/lib/labels";
+import {
+  excludeMarkedProjects,
+  loadProjectMarks,
+} from "@/lib/project-marks";
 import { tagCounts } from "@/lib/sort";
 import { TAGS } from "@/lib/types";
 
@@ -9,7 +13,11 @@ export const dynamic = "force-dynamic";
 
 export default async function TagsPage() {
   const dataset = await getCachedDataset();
-  const counts = tagCounts(dataset?.projects ?? []);
+  const projects = excludeMarkedProjects(
+    dataset?.projects ?? [],
+    loadProjectMarks(),
+  );
+  const counts = tagCounts(projects);
 
   return (
     <PageShell>

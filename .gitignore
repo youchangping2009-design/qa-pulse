@@ -40,6 +40,7 @@ yarn-error.log*
 
 # Fine-grained PAT 等本地密钥
 config/github.local.json
+data/project-marks.json
 *.pat
 secrets/
 

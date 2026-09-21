@@ -6,6 +6,10 @@ import { RefreshBar } from "@/components/refresh-bar";
 import { Badge } from "@/components/ui/badge";
 import { publicConfigStatus } from "@/lib/config";
 import { getCachedDataset } from "@/lib/build";
+import {
+  excludeMarkedProjects,
+  loadProjectMarks,
+} from "@/lib/project-marks";
 import { TAG_LABELS } from "@/lib/labels";
 import { sortProjects, tagCounts } from "@/lib/sort";
 import { TAGS, type ProjectRecord, type TrendPeriod } from "@/lib/types";
@@ -45,14 +49,32 @@ function Section({
   );
 }
 
-export default async function HomePage() {
+function firstParam(
+  value: string | string[] | undefined,
+): string {
+  if (Array.isArray(value)) return value[0] ?? "";
+  return value ?? "";
+}
+
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
   const [dataset, config] = await Promise.all([
     getCachedDataset(),
     Promise.resolve(publicConfigStatus()),
   ]);
-  const projects = dataset?.projects ?? [];
+  const allProjects = dataset?.projects ?? [];
+  const projects = excludeMarkedProjects(allProjects, loadProjectMarks());
   const counts = tagCounts(projects);
   const newest = sortProjects(projects, "newest").slice(0, 5);
+  const flash = firstParam(params.refreshed)
+    ? "ok"
+    : firstParam(params.refreshError)
+      ? "error"
+      : null;
 
   return (
     <PageShell>
@@ -84,12 +106,21 @@ export default async function HomePage() {
           configRelPath: config.configRelPath,
         }}
         note={dataset?.note}
+        flash={flash}
       />
 
-      {projects.length === 0 ? (
+      {allProjects.length === 0 ? (
         <div className="rounded-xl border border-dashed px-6 py-16 text-center text-sm text-muted-foreground">
           还没有本地数据。配置 Fine-grained PAT 后点击「刷新数据」，或运行{" "}
           <code className="font-mono text-xs">npm run snapshot</code>。
+        </div>
+      ) : projects.length === 0 ? (
+        <div className="rounded-xl border border-dashed px-6 py-16 text-center text-sm text-muted-foreground">
+          所有项目都已标记，可前往{" "}
+          <Link href="/marks" className="underline underline-offset-4">
+            我的标记
+          </Link>{" "}
+          查看或恢复。
         </div>
       ) : (
         <>

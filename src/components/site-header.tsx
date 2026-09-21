@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
-  { href: "/projects", label: "项目" },
-  { href: "/tags", label: "分类" },
   { href: "/trends/weekly", label: "本周" },
   { href: "/trends/monthly", label: "本月" },
+  { href: "/projects", label: "全部" },
+  { href: "/marks", label: "我的标记" },
   { href: "/settings", label: "设置" },
 ];
 
@@ -14,7 +14,10 @@ export function SiteHeader() {
   return (
     <header className="border-b bg-card/80">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="font-heading text-lg font-semibold">
+        <Link
+          href="/trends/weekly"
+          className="font-heading text-lg font-semibold"
+        >
           QA Pulse
         </Link>
         <nav className="flex flex-wrap items-center gap-1">

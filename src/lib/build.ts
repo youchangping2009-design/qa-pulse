@@ -1,4 +1,3 @@
-import { loadCatalog, slugFromFullName } from "@/lib/catalog";
 import { loadConfig, publicConfigStatus } from "@/lib/config";
 import { discoverRepos } from "@/lib/discover";
 import {
@@ -15,7 +14,6 @@ import {
 } from "@/lib/store";
 import { computeDeltas, historyForRepo } from "@/lib/trends";
 import type {
-  CatalogEntry,
   Dataset,
   ProjectRecord,
   ProjectStatus,
@@ -28,9 +26,24 @@ function isFresh(dataset: Dataset, ttlHours: number): boolean {
   return Date.now() - generated < ttlHours * 3600 * 1000;
 }
 
+function slugFromFullName(fullName: string, used: Set<string>): string {
+  const [owner, repo] = fullName.split("/");
+  const base = (repo ?? fullName)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  if (base && !used.has(base)) {
+    used.add(base);
+    return base;
+  }
+  const slug = `${(owner ?? "repo").toLowerCase()}-${base || "project"}`;
+  used.add(slug);
+  return slug;
+}
+
 function toProject(
   payload: GithubRepoPayload,
-  entry: CatalogEntry | null,
+  entry: ProjectRecord | null,
   source: ProjectRecord["source"],
   today: string,
   snapshots: ReturnType<typeof loadSnapshotHistory>,
@@ -71,7 +84,7 @@ function toProject(
   };
 }
 
-async function fetchCatalogRepos(
+async function fetchTrackedRepos(
   fullNames: string[],
   concurrency: number,
 ): Promise<Map<string, GithubRepoPayload>> {
@@ -96,17 +109,17 @@ async function fetchCatalogRepos(
 
 export async function buildDataset(): Promise<Dataset> {
   const config = loadConfig();
-  const catalog = loadCatalog();
+  const trackedProjects = loadDataset()?.projects ?? [];
   const today = toIsoDate(new Date());
   const snapshots = loadSnapshotHistory();
-  const usedSlugs = new Set(catalog.map((item) => item.slug).filter(Boolean) as string[]);
+  const usedSlugs = new Set(trackedProjects.map((project) => project.slug));
   const byName = new Map(
-    catalog.map((entry) => [entry.fullName.toLowerCase(), entry]),
+    trackedProjects.map((project) => [project.id.toLowerCase(), project]),
   );
 
-  const payloads = await fetchCatalogRepos(
-    catalog.map((entry) => entry.fullName),
-    config.watchlistConcurrency,
+  const payloads = await fetchTrackedRepos(
+    trackedProjects.map((project) => project.id),
+    config.projectFetchConcurrency,
   );
 
   const projects: ProjectRecord[] = [];
@@ -114,17 +127,17 @@ export async function buildDataset(): Promise<Dataset> {
   const known = new Set<string>();
   const failures: string[] = [];
 
-  for (const entry of catalog) {
-    const payload = payloads.get(entry.fullName.toLowerCase());
+  for (const entry of trackedProjects) {
+    const payload = payloads.get(entry.id.toLowerCase());
     if (!payload) {
-      failures.push(entry.fullName);
+      failures.push(entry.id);
       continue;
     }
     known.add(payload.full_name.toLowerCase());
     const project = toProject(
       payload,
-      byName.get(entry.fullName.toLowerCase()) ?? entry,
-      "catalog",
+      byName.get(entry.id.toLowerCase()) ?? entry,
+      "tracked",
       today,
       snapshots,
       usedSlugs,
@@ -188,7 +201,7 @@ export async function buildDataset(): Promise<Dataset> {
     notes.push("快照还不足两天，日/周/月涨幅会在积累后显示。");
   }
   if (failures.length) {
-    notes.push(`有 ${failures.length} 个观察名单仓库拉取失败。`);
+    notes.push(`有 ${failures.length} 个已有项目拉取失败。`);
   }
 
   const dataset: Dataset = {

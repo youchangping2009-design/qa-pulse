@@ -8,6 +8,7 @@ import {
 } from "@/lib/project-marks";
 import { filterProjects, sortProjects } from "@/lib/sort";
 import type { SortKey } from "@/lib/types";
+import { formatCnDateTime } from "@/lib/week";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +46,14 @@ export default async function ProjectsPage({
   return (
     <PageShell>
       <div>
-        <h1 className="font-heading text-3xl font-semibold">全部项目</h1>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <h1 className="font-heading text-3xl font-semibold">全部项目</h1>
+          {dataset ? (
+            <p className="text-sm text-muted-foreground">
+              更新于 {formatCnDateTime(dataset.generatedAt)}
+            </p>
+          ) : null}
+        </div>
         <p className="mt-2 text-sm text-muted-foreground">
           {projects.length} 个测试相关仓库，按本周涨星、总星标或最近更新排序。
         </p>

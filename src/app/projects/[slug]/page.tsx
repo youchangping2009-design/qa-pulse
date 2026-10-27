@@ -69,9 +69,8 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      <dl className="grid gap-3 sm:grid-cols-4">
+      <dl className="grid gap-3 sm:grid-cols-3">
         <Stat label="总星标" value={formatStars(project.stars)} />
-        <Stat label="今日+" value={formatDelta(project.delta.daily)} hint={WINDOW_LABELS[project.deltaWindow.daily]} />
         <Stat label="本周+" value={formatDelta(project.delta.weekly)} hint={WINDOW_LABELS[project.deltaWindow.weekly]} />
         <Stat label="本月+" value={formatDelta(project.delta.monthly)} hint={WINDOW_LABELS[project.deltaWindow.monthly]} />
       </dl>

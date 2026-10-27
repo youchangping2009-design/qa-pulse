@@ -12,7 +12,7 @@ export type GithubConfigFile = {
 export type AppConfigFile = {
   cacheTtlHours?: number;
   discoveryEnabled?: boolean;
-  watchlistConcurrency?: number;
+  projectFetchConcurrency?: number;
   userAgent?: string;
 };
 
@@ -25,7 +25,7 @@ export type ResolvedConfig = {
   userAgent: string;
   cacheTtlHours: number;
   discoveryEnabled: boolean;
-  watchlistConcurrency: number;
+  projectFetchConcurrency: number;
   configPath: string;
   examplePath: string;
 };
@@ -126,7 +126,7 @@ export function loadConfig(): ResolvedConfig {
     userAgent: app.userAgent || "best-of-qa",
     cacheTtlHours: app.cacheTtlHours ?? 6,
     discoveryEnabled: app.discoveryEnabled ?? true,
-    watchlistConcurrency: app.watchlistConcurrency ?? 4,
+    projectFetchConcurrency: app.projectFetchConcurrency ?? 4,
     configPath: LOCAL_CONFIG,
     examplePath: EXAMPLE_CONFIG,
   };

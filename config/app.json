@@ -1,6 +1,6 @@
 {
   "cacheTtlHours": 6,
   "discoveryEnabled": true,
-  "watchlistConcurrency": 4,
+  "projectFetchConcurrency": 4,
   "userAgent": "best-of-qa"
 }

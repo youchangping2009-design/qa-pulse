@@ -18,14 +18,13 @@ export type Category = Tag;
 
 export const PROJECT_STATUSES = [
   "active",
-  "featured",
   "deprecated",
   "pending",
 ] as const;
 
 export type ProjectStatus = (typeof PROJECT_STATUSES)[number];
 
-export type ProjectSource = "catalog" | "discovery";
+export type ProjectSource = "tracked" | "discovery";
 
 export type DeltaWindow = "full" | "partial" | "missing";
 
@@ -45,15 +44,6 @@ export type ProjectMark = {
 };
 
 export type ProjectMarks = Record<string, ProjectMark>;
-
-export type CatalogEntry = {
-  fullName: string;
-  tags: Tag[];
-  status?: ProjectStatus;
-  slug?: string;
-  name?: string;
-  homepage?: string;
-};
 
 export type StarHistoryPoint = {
   date: string;

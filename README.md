@@ -8,7 +8,7 @@
 
 GitHub 没有公开的「本周新增 star」接口。本项目自行存快照：
 
-1. 维护观察名单 `data/catalog.json`，再用搜索发现近期相关新仓。
+1. 以上一次生成的 `data/projects.json` 为刷新名单，同时搜索发现近期相关新仓。
 2. 每次刷新把当前星标写入 `data/snapshots/YYYY-MM-DD.json`。
 3. 今日涨幅 = 当前 − 昨天；本周 = 当前 − 7 天前；本月 = 当前 − 30 天前。没有刚好那天的快照时，回退到更早的最近一次，并标记窗口不足。
 
@@ -40,4 +40,4 @@ npm run dev
 
 个人标记保存在本地 `data/project-marks.json`，不会随 GitHub 数据刷新被覆盖，也不会提交到 Git。
 
-观察名单在 `data/catalog.json`，发现规则在 `data/discovery.json`。换领域只需改这两份配置和 `src/lib/relevance.ts`。
+已有项目保存在 `data/projects.json`，发现规则在 `data/discovery.json`。自动发现的项目会在后续刷新中继续保留。

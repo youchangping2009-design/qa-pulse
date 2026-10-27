@@ -8,10 +8,17 @@ import {
   loadProjectMarks,
 } from "@/lib/project-marks";
 import type { TrendPeriod } from "@/lib/types";
+import { formatCnDateTime } from "@/lib/week";
 
 export const dynamic = "force-dynamic";
 
 const PERIODS = ["daily", "weekly", "monthly"] as const;
+
+const PERIOD_SNAPSHOT_LABELS: Record<TrendPeriod, string> = {
+  daily: "每日",
+  weekly: "每周",
+  monthly: "每月",
+};
 
 function isPeriod(value: string): value is TrendPeriod {
   return (PERIODS as readonly string[]).includes(value);
@@ -36,11 +43,18 @@ export default async function TrendsPage({
   return (
     <PageShell>
       <div>
-        <h1 className="font-heading text-3xl font-semibold">
-          {PERIOD_LABELS[period]}涨星榜
-        </h1>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <h1 className="font-heading text-3xl font-semibold">
+            {PERIOD_LABELS[period]}涨星榜
+          </h1>
+          {dataset ? (
+            <p className="text-sm text-muted-foreground">
+              更新于 {formatCnDateTime(dataset.generatedAt)}
+            </p>
+          ) : null}
+        </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          由每日星标快照对比得出。没有对应日期的快照时会回退到最近一次记录。
+          由{PERIOD_SNAPSHOT_LABELS[period]}星标快照对比得出。没有对应日期的快照时会回退到最近一次记录。
         </p>
       </div>
       {projects.length === 0 ? (

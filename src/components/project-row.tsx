@@ -45,9 +45,6 @@ export function ProjectRow({
             >
               {project.id}
             </a>
-            {project.status === "featured" ? (
-              <Badge>精选</Badge>
-            ) : null}
             {project.source === "discovery" ? (
               <Badge variant="outline">新发现</Badge>
             ) : null}
